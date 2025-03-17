@@ -1,0 +1,106 @@
+(lang dune 3.17)
+(name claudius)
+(sections (lib .) (libexec .) (doc ../../doc/claudius))
+(files
+ (lib
+  (META
+   base.ml
+   base.mli
+   claudius.a
+   claudius.cma
+   claudius.cmi
+   claudius.cmt
+   claudius.cmx
+   claudius.cmxa
+   claudius.ml
+   claudius__Base.cmi
+   claudius__Base.cmt
+   claudius__Base.cmti
+   claudius__Base.cmx
+   claudius__Font.cmi
+   claudius__Font.cmt
+   claudius__Font.cmti
+   claudius__Font.cmx
+   claudius__Framebuffer.cmi
+   claudius__Framebuffer.cmt
+   claudius__Framebuffer.cmti
+   claudius__Framebuffer.cmx
+   claudius__Palette.cmi
+   claudius__Palette.cmt
+   claudius__Palette.cmti
+   claudius__Palette.cmx
+   claudius__Primitives.cmi
+   claudius__Primitives.cmt
+   claudius__Primitives.cmti
+   claudius__Primitives.cmx
+   claudius__Screen.cmi
+   claudius__Screen.cmt
+   claudius__Screen.cmti
+   claudius__Screen.cmx
+   dune-package
+   font.ml
+   font.mli
+   framebuffer.ml
+   framebuffer.mli
+   opam
+   palette.ml
+   palette.mli
+   primitives.ml
+   primitives.mli
+   screen.ml
+   screen.mli))
+ (libexec (claudius.cmxs))
+ (doc (LICENSE README.md odoc-pages/index.mld)))
+(library
+ (name claudius)
+ (kind normal)
+ (archives (byte claudius.cma) (native claudius.cmxa))
+ (plugins (byte claudius.cma) (native claudius.cmxs))
+ (native_archives claudius.a)
+ (requires tsdl)
+ (main_module_name Claudius)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name claudius)
+     (visibility public)
+     (kind alias)
+     (source (path Claudius) (impl (path claudius.ml-gen))))
+    (name Claudius)
+    (modules
+     (module
+      (obj_name claudius__Base)
+      (visibility public)
+      (source (path Base) (intf (path base.mli)) (impl (path base.ml))))
+     (module
+      (obj_name claudius__Font)
+      (visibility public)
+      (source (path Font) (intf (path font.mli)) (impl (path font.ml))))
+     (module
+      (obj_name claudius__Framebuffer)
+      (visibility public)
+      (source
+       (path Framebuffer)
+       (intf (path framebuffer.mli))
+       (impl (path framebuffer.ml))))
+     (module
+      (obj_name claudius__Palette)
+      (visibility public)
+      (source
+       (path Palette)
+       (intf (path palette.mli))
+       (impl (path palette.ml))))
+     (module
+      (obj_name claudius__Primitives)
+      (visibility public)
+      (source
+       (path Primitives)
+       (intf (path primitives.mli))
+       (impl (path primitives.ml))))
+     (module
+      (obj_name claudius__Screen)
+      (visibility public)
+      (source (path Screen) (intf (path screen.mli)) (impl (path screen.ml))))))
+   (wrapped true))))

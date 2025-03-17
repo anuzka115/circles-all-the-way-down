@@ -1,0 +1,8 @@
+lib: [
+  "_build/install/default/lib/circles/META"
+  "_build/install/default/lib/circles/dune-package"
+  "_build/install/default/lib/circles/opam"
+]
+bin: [
+  "_build/install/default/bin/circles"
+]

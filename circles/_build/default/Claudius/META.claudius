@@ -1,0 +1,6 @@
+description = ""
+requires = "tsdl"
+archive(byte) = "claudius.cma"
+archive(native) = "claudius.cmxa"
+plugin(byte) = "claudius.cma"
+plugin(native) = "claudius.cmxs"
